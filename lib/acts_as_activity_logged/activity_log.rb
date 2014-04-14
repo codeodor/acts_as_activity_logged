@@ -1,7 +1,10 @@
 class ActivityLog < ActiveRecord::Base
+  #attr_protected #nothing
   belongs_to :activity_loggable, :polymorphic => true
   belongs_to :referenced, :polymorphic => true
   belongs_to :culprit, :polymorphic => true
+
+  attr_accessible :action, :referenced, :culprit
 
   alias the_culprit culprit
   def culprit(options="nil")
